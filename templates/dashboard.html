@@ -1,13 +1,127 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard Analitik{% endblock %}
+{% block title %}Dashboard Analitik Kopi{% endblock %}
 
 {% block content %}
-    <div class="card">
-        <h1 style="text-align: center; margin-bottom: 32px;">Laporan Analitik Attrition Karyawan</h1>
+    <div class="card" style="max-width: 1100px; margin: 0 auto; padding: 30px;">
+        <h1 style="text-align: center; margin-bottom: 20px; color: #5c4033;">☕ Laporan Analitik & Penilaian Kualitas Kopi</h1>
         
-        <div class="dashboard-container">
-            <iframe width="1035" height="898" src="https://lookerstudio.google.com/embed/reporting/82072749-17f4-4b69-a989-44482c844dc9/page/niUrF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div style="background-color: #f9f6f0; border-left: 5px solid #8b5a2b; padding: 20px; border-radius: 5px; margin-bottom: 30px;">
+            <h2 style="color: #8b5a2b; margin-top: 0; font-size: 22px;">Tentang Sistem & Tujuan Prediksi</h2>
+            <p style="color: #444; line-height: 1.6; font-size: 15px;">
+                Sistem analitik ini dirancang untuk mendigitalkan proses evaluasi mutu biji kopi Arabika. Menggunakan algoritma <i>Machine Learning</i>, sistem akan menganalisis data historis untuk memprediksi apakah suatu sampel hasil panen layak masuk ke dalam <b>Specialty Grade</b> (Skor Kualitas Premium &ge; 80 menurut standar Specialty Coffee Association) atau diklasifikasikan sebagai <b>Commercial Grade</b> (Skor Standar &lt; 80).
+            </p>
+
+            <h3 style="color: #5c4033; font-size: 18px; margin-top: 20px; margin-bottom: 10px;">Metrik Parameter Dataset:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e6d7c3; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                    <h3 style="margin-top: 0; color: #5c4033; font-size: 18px; border-bottom: 2px solid #f9f6f0; padding-bottom: 10px;">🌱 Faktor Fisik & Pascapanen</h3>
+                    <ul style="padding-left: 15px; color: #555; line-height: 1.8; font-size: 14px; margin-bottom: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <b>Ketinggian Tanam (Altitude):</b> 
+                            <span style="color: #27ae60; font-weight: bold;">Semakin tinggi semakin bagus.</span> Lahan di atas 1.200 mdpl membuat ceri kopi matang lebih lambat, menghasilkan biji yang lebih padat dan profil rasa/asam yang lebih kompleks.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <b>Kadar Air (Moisture):</b> 
+                            <span style="color: #d35400; font-weight: bold;">Idealnya 10% - 12% (0.10 - 0.12).</span> Jika &lt; 10%, biji rapuh dan kehilangan rasa. Jika &gt; 12%, biji berisiko tumbuh jamur/membusuk saat disimpan.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <b>Jumlah Cacat (Defects):</b> 
+                            Untuk tembus <i>Specialty Grade</i>, kopi <b>tidak boleh</b> memiliki Cacat Primer (Cat 1 = 0) seperti biji hitam legam, dan maksimal hanya boleh memiliki 5 Cacat Sekunder (Cat 2 &le; 5) seperti biji pecah sebagian.
+                        </li>
+                        <li>
+                            <b>Metode Pengolahan:</b> 
+                            Proses <i>Washed (Cuci)</i> umumnya menghasilkan rasa yang lebih "bersih" dan asam yang cerah. Proses <i>Natural (Kering)</i> menghasilkan rasa buah manis dan *body* tebal, namun rentan cacat jika penjemuran tidak merata.
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e6d7c3; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                    <h3 style="margin-top: 0; color: #5c4033; font-size: 18px; border-bottom: 2px solid #f9f6f0; padding-bottom: 10px;">👅 Faktor Sensorik (Cupping)</h3>
+                    <p style="font-size: 14px; color: #555; margin-bottom: 15px;">Dinilai oleh ahli pencicip <i>(Q-Grader)</i> pada skala <b>0.0 hingga 10.0</b>. Kopi <i>Specialty</i> rata-rata membutuhkan skor konsisten di atas <b>8.0</b> untuk setiap elemen rasa berikut:</p>
+                    <ul style="padding-left: 15px; color: #555; line-height: 1.8; font-size: 14px; margin-bottom: 0;">
+                        <li><b>Aroma:</b> Keharuman bubuk kopi saat kering dan saat diseduh air panas.</li>
+                        <li><b>Flavor:</b> Karakter rasa utama (kombinasi aroma dan rasa di mulut).</li>
+                        <li><b>Acidity:</b> Tingkat keasaman. Asam yang bagus akan terasa segar dan cerah (seperti buah), bukan asam yang kecut.</li>
+                        <li><b>Body:</b> Ketebalan/kekentalan kopi saat berada di dalam mulut.</li>
+                        <li><b>Aftertaste:</b> Jejak rasa yang tertinggal di tenggorokan setelah kopi ditelan (semakin panjang dan manis, semakin bagus).</li>
+                        <li><b>Balance:</b> Keseimbangan harmoni; tidak ada satu rasa pun yang mendominasi atau merusak elemen rasa lainnya.</li>
+                    </ul>
+                </div>
+
             </div>
+        </div>
+
+        <hr style="border: 1px dashed #d4c5b0; margin: 30px 0;">
+
+        <h2 style="text-align: center; color: #5c4033; margin-bottom: 20px;">📊 Visualisasi Data Interaktif</h2>
+        <div class="dashboard-container" style="display: flex; justify-content: center; margin-bottom: 40px;">
+            <iframe width="1038" height="898" src="https://datastudio.google.com/embed/reporting/98d8dcb0-65bf-4e42-a87c-b6fbe57f8db6/page/S9A1F" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+
+        <hr style="border: 1px dashed #d4c5b0; margin: 30px 0;">
+
+        <h2 style="color: #8b5a2b; margin-bottom: 10px;">Kamus Data (Penjelasan Kode Form)</h2>
+        <p style="color: #555; line-height: 1.6; margin-bottom: 25px; font-size: 15px;">
+            Untuk mempermudah komputasi model prediksi, sistem mengonversi teks kategori menjadi kode angka. Berikut adalah daftar lengkap kode yang digunakan pada halaman form:
+        </p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            
+            <div style="flex: 1; min-width: 300px; background-color: #f9f6f0; padding: 25px; border-radius: 10px; border: 1px solid #e6d7c3; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="margin-top: 0; color: #5c4033; border-bottom: 2px solid #d4c5b0; padding-bottom: 10px;">🔄 Metode Pascapanen</h3>
+                <ul style="list-style-type: none; padding-left: 0; color: #444; line-height: 2.2; font-size: 15px;">
+                    <li><strong>0</strong> = Natural / Dry</li>
+                    <li><strong>1</strong> = Other (Lainnya)</li>
+                    <li><strong>2</strong> = Pulped Natural / Honey</li>
+                    <li><strong>3</strong> = Semi-washed / Semi-pulped</li>
+                    <li><strong>4</strong> = Washed / Wet</li>
+                </ul>
+            </div>
+
+            <div style="flex: 2; min-width: 400px; background-color: #f9f6f0; padding: 25px; border-radius: 10px; border: 1px solid #e6d7c3; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="margin-top: 0; color: #5c4033; border-bottom: 2px solid #d4c5b0; padding-bottom: 10px;">🌍 Kode Negara Asal</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; color: #444; font-size: 14px; line-height: 1.6;">
+                    <div><strong>0:</strong> Brazil</div>
+                    <div><strong>1:</strong> Burundi</div>
+                    <div><strong>2:</strong> China</div>
+                    <div><strong>3:</strong> Colombia</div>
+                    <div><strong>4:</strong> Costa Rica</div>
+                    <div><strong>5:</strong> Cote d'Ivoire</div>
+                    <div><strong>6:</strong> Ecuador</div>
+                    <div><strong>7:</strong> El Salvador</div>
+                    <div><strong>8:</strong> Ethiopia</div>
+                    <div><strong>9:</strong> Guatemala</div>
+                    <div><strong>10:</strong> Haiti</div>
+                    <div><strong>11:</strong> Honduras</div>
+                    <div><strong>12:</strong> India</div>
+                    <div><strong style="color: #d35400;">13: Indonesia</strong></div>
+                    <div><strong>14:</strong> Japan</div>
+                    <div><strong>15:</strong> Kenya</div>
+                    <div><strong>16:</strong> Laos</div>
+                    <div><strong>17:</strong> Malawi</div>
+                    <div><strong>18:</strong> Mauritius</div>
+                    <div><strong>19:</strong> Mexico</div>
+                    <div><strong>20:</strong> Myanmar</div>
+                    <div><strong>21:</strong> Nicaragua</div>
+                    <div><strong>22:</strong> Panama</div>
+                    <div><strong>23:</strong> Papua New Guinea</div>
+                    <div><strong>24:</strong> Peru</div>
+                    <div><strong>25:</strong> Philippines</div>
+                    <div><strong>26:</strong> Rwanda</div>
+                    <div><strong>27:</strong> Taiwan</div>
+                    <div><strong>28:</strong> Tanzania</div>
+                    <div><strong>29:</strong> Thailand</div>
+                    <div><strong>30:</strong> Uganda</div>
+                    <div><strong>31:</strong> United States</div>
+                    <div><strong>32:</strong> USA (Hawaii)</div>
+                    <div><strong>33:</strong> USA (Puerto Rico)</div>
+                    <div><strong>34:</strong> Vietnam</div>
+                    <div><strong>35:</strong> Zambia</div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 {% endblock %}

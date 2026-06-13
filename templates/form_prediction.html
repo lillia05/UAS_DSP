@@ -1,101 +1,97 @@
 {% extends "base.html" %}
 
-{% block title %}Prediksi AI - Attrition{% endblock %}
+{% block title %}Prediksi AI - Grade Kopi{% endblock %}
 
 {% block content %}
     <div class="card" style="max-width: 850px; margin: 0 auto;">
-        <h1 style="text-align: center; margin-bottom: 32px;">Prediksi Karyawan Resign (Attrition)</h1>
+        <h1 style="text-align: center; margin-bottom: 32px; color: #5c4033;">Prediksi Grade Kopi Arabika</h1>
         
         <form method="POST" action="/predict">
             <div class="form-grid">
                 
-                <div class="form-group" style="grid-column: span 2; border-bottom: 2px solid #e8f5e9; padding-bottom: 5px; margin-bottom: 10px;">
-                    <h3 style="color: #006400; margin: 0;">1. Profil Karyawan</h3>
+                <div class="form-group" style="grid-column: span 2; border-bottom: 2px solid #e6d7c3; padding-bottom: 5px; margin-bottom: 10px;">
+                    <h3 style="color: #8b5a2b; margin: 0;">1. Data Fisik & Geografis</h3>
                 </div>
 
                 <div class="form-group">
-                    <label>Umur (Age):</label>
-                    <input type="number" name="Age" required class="form-control" placeholder="Contoh: 28">
+                    <label>Negara Asal (Kode: 0-35):</label>
+                    <input type="number" name="country" required class="form-control" placeholder="Contoh: 13 (Indonesia)">
                 </div>
 
                 <div class="form-group">
-                    <label>Jenis Kelamin (Gender):</label>
-                    <select name="Gender" class="form-control">
-                        <option value="1">Male (Laki-laki)</option>
-                        <option value="0">Female (Perempuan)</option>
+                    <label>Metode Proses:</label>
+                    <select name="processing" class="form-control">
+                        <option value="1">Washed / Wet</option>
+                        <option value="0">Natural / Dry</option>
+                        <option value="2">Semi-Washed / Pulped Natural</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Status Pernikahan (Marital Status):</label>
-                    <select name="MaritalStatus" class="form-control">
-                        <option value="2">Single (Belum Menikah)</option>
-                        <option value="1">Married (Menikah)</option>
-                        <option value="0">Divorced (Cerai)</option>
-                    </select>
+                    <label>Ketinggian Tanam (mdpl):</label>
+                    <input type="number" step="any" name="altitude" required class="form-control" placeholder="Contoh: 1500">
                 </div>
 
                 <div class="form-group">
-                    <label>Departemen (Department):</label>
-                    <select name="Department" class="form-control">
-                        <option value="1">Research & Development</option>
-                        <option value="2">Sales</option>
-                        <option value="0">Human Resources</option>
-                    </select>
-                </div>
-
-                <div class="form-group" style="grid-column: span 2; border-bottom: 2px solid #e8f5e9; padding-bottom: 5px; margin-bottom: 10px; margin-top: 10px;">
-                    <h3 style="color: #006400; margin: 0;">2. Kondisi Pekerjaan & Karir</h3>
+                    <label>Kadar Air / Moisture (0.00 - 0.20):</label>
+                    <input type="number" step="any" name="moisture" required class="form-control" placeholder="Contoh: 0.11">
                 </div>
 
                 <div class="form-group">
-                    <label>Sering Lembur? (OverTime):</label>
-                    <select name="OverTime" class="form-control">
-                        <option value="1">Yes (Sering Lembur)</option>
-                        <option value="0">No (Tidak Pernah/Jarang)</option>
-                    </select>
+                    <label>Jumlah Cacat Primer (Cat 1 Defects):</label>
+                    <input type="number" name="cat_one" required class="form-control" placeholder="Contoh: 0">
                 </div>
 
                 <div class="form-group">
-                    <label>Frekuensi Dinas (Business Travel):</label>
-                    <select name="BusinessTravel" class="form-control">
-                        <option value="2">Travel Rarely (Jarang)</option>
-                        <option value="1">Travel Frequently (Sering)</option>
-                        <option value="0">Non-Travel (Tidak Pernah)</option>
-                    </select>
+                    <label>Jumlah Cacat Sekunder (Cat 2 Defects):</label>
+                    <input type="number" name="cat_two" required class="form-control" placeholder="Contoh: 2">
+                </div>
+
+                <div class="form-group" style="grid-column: span 2; border-bottom: 2px solid #e6d7c3; padding-bottom: 5px; margin-bottom: 10px; margin-top: 10px;">
+                    <h3 style="color: #8b5a2b; margin: 0;">2. Evaluasi Sensorik / Cupping (Skala 0 - 10)</h3>
                 </div>
 
                 <div class="form-group">
-                    <label>Jarak Rumah ke Kantor (Km):</label>
-                    <input type="number" name="DistanceFromHome" required class="form-control" placeholder="Contoh: 15">
+                    <label>Aroma:</label>
+                    <input type="number" step="any" name="aroma" required class="form-control" placeholder="Contoh: 8.5">
                 </div>
 
                 <div class="form-group">
-                    <label>Gaji Bulanan (Monthly Income USD):</label>
-                    <input type="number" name="MonthlyIncome" required class="form-control" placeholder="Contoh: 3000">
+                    <label>Flavor (Rasa Utama):</label>
+                    <input type="number" step="any" name="flavor" required class="form-control" placeholder="Contoh: 8.2">
                 </div>
 
                 <div class="form-group">
-                    <label>Total Pengalaman Kerja (Tahun):</label>
-                    <input type="number" name="TotalWorkingYears" required class="form-control" placeholder="Contoh: 8">
+                    <label>Aftertaste (Jejak Rasa):</label>
+                    <input type="number" step="any" name="aftertaste" required class="form-control" placeholder="Contoh: 8.0">
                 </div>
 
                 <div class="form-group">
-                    <label>Lama Bekerja di Sini (Tahun):</label>
-                    <input type="number" name="YearsAtCompany" required class="form-control" placeholder="Contoh: 3">
+                    <label>Acidity (Keasaman):</label>
+                    <input type="number" step="any" name="acidity" required class="form-control" placeholder="Contoh: 8.3">
+                </div>
+
+                <div class="form-group">
+                    <label>Body (Kekentalan):</label>
+                    <input type="number" step="any" name="body" required class="form-control" placeholder="Contoh: 8.1">
+                </div>
+
+                <div class="form-group">
+                    <label>Balance (Keseimbangan):</label>
+                    <input type="number" step="any" name="balance" required class="form-control" placeholder="Contoh: 8.4">
                 </div>
 
             </div>
 
-            <button type="submit" class="btn-predict" style="margin-top: 25px; padding: 15px; font-size: 18px;">
-                🚀 Prediksi Sekarang
+            <button type="submit" class="btn-predict" style="margin-top: 25px; padding: 15px; font-size: 18px; background-color: #5c4033; color: white; width: 100%; border: none; border-radius: 5px; cursor: pointer;">
+                ☕ Analisis Kualitas Kopi
             </button>
         </form>
 
         {% if prediction %}
-            <div class="result-box" style="text-align: center; margin-top: 35px; border: 2px dashed #006400;">
-                <h3 style="margin-top: 0;">Hasil Prediksi:</h3>
-                <h1 style="font-size: 32px; margin: 10px 0;">{{ prediction }}</h1>
+            <div class="result-box" style="text-align: center; margin-top: 35px; border: 2px dashed #8b5a2b; padding: 20px; border-radius: 10px; background-color: #f9f6f0;">
+                <h3 style="margin-top: 0; color: #5c4033;">Hasil Evaluasi AI:</h3>
+                <h1 style="font-size: 28px; margin: 10px 0; color: #d35400;">{{ prediction }}</h1>
             </div>
         {% endif %}
     </div>
